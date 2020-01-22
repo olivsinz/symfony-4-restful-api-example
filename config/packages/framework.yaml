@@ -14,3 +14,7 @@ framework:
     #fragments: true
     php_errors:
         log: true
+
+    # Using the Serializer component of Symfony
+    serializer:
+        enabled: true

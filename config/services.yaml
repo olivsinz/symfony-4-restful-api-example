@@ -25,3 +25,26 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\EventListener\LoggerListener:
+        arguments: ['@logger']
+        tags:
+            - { name: monolog.logger, channel: app }
+            - { name: doctrine.event_listener, event: postUpdate }
+
+    App\Normalizer\NotFoundHttpExceptionNormalizer:
+        arguments:
+            - { type: 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' }
+        tags:
+            - { name: app.normalizer }
+
+    App\Normalizer\MethodNotAllowedHttpExceptionNormalizer:
+        arguments:
+            - { type: 'Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException' }
+        tags:
+            - { name: app.normalizer }
+
+    App\EventSubscriber\ExceptionSubscriber:
+        arguments: ['@serializer']
+        tags:
+            - { name: kernel.event_subscriber }
