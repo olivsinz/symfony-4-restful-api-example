@@ -30,7 +30,7 @@ services:
         arguments: ['@logger']
         tags:
             - { name: monolog.logger, channel: app }
-            - { name: doctrine.event_listener, event: postUpdate }
+            - { name: doctrine.event_listener, event: preUpdate }
 
     App\Normalizer\NotFoundHttpExceptionNormalizer:
         arguments:

@@ -4,6 +4,8 @@ namespace App\EventListener;
 
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Psr\Log\LoggerInterface;
+use App\Entity\User;
+
 
 /**
  *
@@ -16,7 +18,7 @@ class LoggerListener
         $this->logger = $logger;
     }
 
-    public function postUpdate(LifecycleEventArgs $args)
+    public function preUpdate(LifecycleEventArgs $args)
     {
         $entity = $args->getObject();
 
@@ -25,6 +27,7 @@ class LoggerListener
           return;
         }
 
+        // we report in the logs that user with $entity->getId() has changed
         $this->logger->info('User '. $entity->getId().' has been changed.');
     }
 }

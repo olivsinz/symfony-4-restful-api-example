@@ -73,8 +73,8 @@ class User
 
     public function __construct()
     {
-        $this->creationdate = new \Datetime();
-        $this->updatedate = new \DateTime();
+        // $this->creationdate = new \Datetime();
+        // $this->updatedate = new \DateTime();
     }
 
     public function getId(): ?int
@@ -135,6 +135,22 @@ class User
      * @ORM\PreUpdate
      */
     public function updateUpdatedate()
+    {
+        $this->setUpdatedate(new \Datetime());
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function fillCreationdate()
+    {
+        $this->setCreationdate(new \Datetime());
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function fillUpdatedate()
     {
         $this->setUpdatedate(new \Datetime());
     }
