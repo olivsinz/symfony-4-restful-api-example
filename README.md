@@ -1,9 +1,4 @@
 # symfony-4-restful-api-example
-Symfony 4 RESTful API Demo
-
-About this repo
-
-This API is based on FOSRESTBundle.
 
 ## Installation
 
