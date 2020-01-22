@@ -8,10 +8,9 @@ This API is based on FOSRESTBundle.
 ## Installation
 
 * Download the code
-* Execute the `composer install` command to install the project dependencies
 * Create .env file based on .env.example
 * Enter database credentials in env file
+* Execute the `composer install` command to install the project dependencies
 * Run `php bin/console doctrine:database:create`
-* Run `php bin/console make:migration`
-* Run `php bin/console doctrine:migrations:migrate`
-* Run `php bin/console doctrine:schema:update --force`
+* Run `php bin/console doctrine:schema:create`
+* Run `php bin/console doctrine:fixtures:load` to fill the database with dummies users to test the code without creating users at the start

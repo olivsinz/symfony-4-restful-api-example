@@ -147,6 +147,6 @@ class UserController extends AbstractFOSRestController
         $em = $this->getDoctrine()->getManager();
         $em->remove($user);
         $em->flush();
-        return $this->view("user deleted", Response::HTTP_ACCEPTED);
+        return $this->view("Specified user deleted", Response::HTTP_ACCEPTED);
     }
 }
